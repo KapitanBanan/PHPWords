@@ -26,11 +26,20 @@ class Home extends BaseController
 		echo $id;
 		$db = \Config\Database::connect();
 
-		$query   = $db->query('SELECT text from words WHERE parent_id = '.$id.';');
+		$query   = $db->query('SELECT text, id from words WHERE parent_id = '.$id.';');
 		$results = $query->getResultArray();
 		$data['result'] = $results;
-		$query = null;
+
 		return view('question', $data);
+	}
+
+	public function answer($id){
+		$db = \Config\Database::connect();
+
+		$query   = $db->query("select is_correct from words where id = ".$id.";");
+		$result = $query->getFirstRow();
+		$data['result'] = $result->is_correct == 1 ? "Congratulation" : "Wrong";
+		return view('answer', $data);
 	}
 
 	//--------------------------------------------------------------------

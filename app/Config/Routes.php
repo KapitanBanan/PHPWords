@@ -74,6 +74,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->add("question/(:num)", "Home::question/$1");
+$routes->add("answer/(:num)", "Home::answer/$1");
 
 /**
  * --------------------------------------------------------------------

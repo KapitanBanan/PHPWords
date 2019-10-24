@@ -1,8 +1,9 @@
 <ul>
 	<?php if (!empty($result)) {
+		print_r($result);
 		foreach ($result as $row):?>
 			<li>
-				<?= $row["text"];?>
+				<a href="/answer/<?= $row["id"];?>"><?= $row["text"];?></a>
 			</li>
 		<?php endforeach;
 	} ?>
