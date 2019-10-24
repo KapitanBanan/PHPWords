@@ -105,8 +105,23 @@
 
 			<h1>Welcome to CodeIgniter</h1>
 			<h3><a href="/pages/showme/timur">Timur</a></h3>
-			<p><h1>Timur</h1>
-			<p><?= $result; ?></p></p>
+
+			<h3>RESULTS</h3>
+			<h3><?php if (!empty($result)) {
+					echo $result;
+				} ?></h3>
+			<ul>
+				<?php if (!empty($result)) {
+					foreach ($result as $row):?>
+							<li>
+								<a href="/question/<?= $row["id"] ?>">
+									<?= $row["text"] ?>
+								</a>
+							</li>
+					<?php endforeach;
+				} ?>
+			</ul>
+
 			<p class="version">version <?= CodeIgniter\CodeIgniter::CI_VERSION ?></p>
 
 			<div class="guide">
